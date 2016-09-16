@@ -3,7 +3,10 @@ package bit;
 /**
  * reference http://blog.csdn.net/morewindows/article/details/7354571
  * @author wangxy
- *
+ * 位运算
+ * 异或运算的性质:1.自己与自己异或结果为0
+ * 异或运算的性质:2.异或满足交换律
+ * 对于任何数，与0异或都会保持不变
  */
 public class BitCalculate {
 
