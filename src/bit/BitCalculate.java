@@ -20,12 +20,21 @@ public class BitCalculate {
 		
 		System.out.println(isEvenNumber(105));
 		System.out.println(isEvenNumber(888));
-		
+		//交换两个数字
 		int[] arr = {13,16};
 		swap(arr);
 		for(int i=0;i<arr.length;i++){
 			System.out.println(arr[i]);
 		}
+		//符号反转
+		System.out.println(signReverse(-487));
+		System.out.println(signReverse(4478));
+		//取绝对值
+		System.out.println(abs(-123));
+		System.out.println(abs(456));
+		//寻找缺失数字
+		int a[] = {1, 347, 6, 9, 13, 65, 889, 712, 889, 347, 1, 9, 65, 13, 712}; 
+		System.out.println(getSingleArray(a));
 	}
 	
 	/**
@@ -47,5 +56,40 @@ public class BitCalculate {
 			array[1] ^= array[0];
 			array[0] ^= array[1];
 		}
+	}
+	
+	/**
+	 * 变换符号；负数采用补码形式保存，即按位取反后+1
+	 * 取反后+1
+	 * @param t
+	 * @return
+	 */
+	public static int signReverse(int i){
+		return ~i + 1;
+	}
+	
+	/**
+	 * 求绝对值
+	 * @param i
+	 * @return
+	 */
+	public static int abs(int i){
+		//取符号位
+		int sign = i>>31;
+		//符号位为0则为正数
+		return sign == 0? i : (~i+1);
+	}
+	
+	/**
+	 * 假设输入1组int数组，近且仅有1个数字出现1次，其他均出现2次，找出此数字
+	 * @param arr
+	 * @return
+	 */
+	public static int getSingleArray(int[] array){
+		int dec = 0;
+		for(int i = 0;i<array.length;i++){
+			dec ^= array[i];
+		}
+		return dec;
 	}
 }
