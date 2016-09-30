@@ -22,7 +22,12 @@ public class RegulaExpression {
 		
 		//replace html tag
 		str = "<a href=\"index.html/\">homepage</a>";
-		System.out.println(str);
+		System.out.println(replaceHtmlTag(str));
+		
+		String tel = "021-67519871";
+		System.out.println(isTel(tel));
+		tel = "0556-7519871";
+		System.out.println(isTel(tel));
 	}
 	
 	public static boolean isMailAddress(String input){
@@ -38,5 +43,12 @@ public class RegulaExpression {
 		String string = matcher.replaceAll("");
 		
 		return string;
+	}
+	
+	public static boolean isTel(String input){
+		Pattern pattern = Pattern.compile("\\d{3,4}-\\d{7,8}", Pattern.CASE_INSENSITIVE);
+		Matcher matcher = pattern.matcher(input);
+		return matcher.matches();
+		
 	}
 }
