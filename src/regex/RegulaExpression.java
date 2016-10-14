@@ -42,8 +42,28 @@ public class RegulaExpression {
 //		String dec3 = "2984144215";
 //		System.out.println(formatDecimal(dec3));
 		
-		String strWord = "this that that is abc";
-		System.out.println(matchMultipyWord(strWord));
+//		String strWord = "this that that is abc";
+//		System.out.println(matchMultipyWord(strWord));
+		
+		String str = "10/21ÅÀ10/23\nÅÀ12/21";
+		str = str.replaceAll("\n", "");
+		Pattern pattern = Pattern.compile("ÅÀ", Pattern.CASE_INSENSITIVE);
+		Matcher matcher = pattern.matcher(str);
+//		while(matcher.find()){
+//			System.out.println(matcher.group());
+//		}
+//		
+		String[] strs = pattern.split(str);
+		for (int i=0;i<strs.length;i++) {
+		    System.out.println(strs[i]);
+		}
+//		
+//		pattern = Pattern.compile("[^\\\\]*$");
+//		Matcher matcher = pattern.matcher("C:\\programe files\\a.txt");
+//		while(matcher.find()){
+//			System.out.println(matcher.group());
+//		}
+		
 
 	}
 	
