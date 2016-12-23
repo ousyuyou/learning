@@ -46,7 +46,7 @@ public class CharSetDemo {
 		
 		System.out.println("utf-16 char byte[]");
 		byte[] byte_utf16 = str.getBytes("utf-16");//FE FF:BOM(UTF-16BE)Byte Order Mark
-		System.out.println(byte_utf16.length);
+//		System.out.println(byte_utf16.length);
 		printHexString(byte_utf16);
 		
 		System.out.println("unicode char byte[]");
