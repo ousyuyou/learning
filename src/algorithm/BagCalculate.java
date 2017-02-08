@@ -1,6 +1,5 @@
 package algorithm;
 
-import java.util.HashMap;
 
 public class BagCalculate {
 
@@ -16,15 +15,6 @@ public class BagCalculate {
 //		int[] a = {7,11,13,5,2,10,50};
 //		
 //		calcBagEqual(m,a);
-		
-		int m = -8;
-		int[] a = {-4,-3,-1,-5};
-		BagCalculate b = new BagCalculate();
-		int[] aa = b.twoSum(a,m);
-		
-		for(int i = 0 ; i < aa.length ; i++){
-			System.out.println(aa[i]);
-		}
 	}
 	
 	/**
@@ -102,19 +92,4 @@ public class BagCalculate {
 		System.out.println(c[a.length-1][m]);
 		System.out.println(strBuf.reverse().toString());
 	}
-	
-    public int[] twoSum(int[] nums, int target) {
-    	HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-    	int[] index = new int[2];
-    	
-		for(int i = 0 ; i < nums.length ;i++){
-			if(map.get(target - nums[i]) != null){
-				index[0] = map.get(target - nums[i]);
-				index[1] = i;
-				break;
-			}
-			map.put(nums[i], i);
-		}
-		return index;
-    }
 }
