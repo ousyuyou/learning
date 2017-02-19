@@ -1,9 +1,6 @@
 package algorithm;
 
 import java.util.HashMap;
-import java.util.HashSet;
-
-import temp.Solution;
 
 /**
  * Definition for singly-linked list.
