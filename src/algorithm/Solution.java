@@ -3,6 +3,8 @@ package algorithm;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import temp.Solution;
+
 /**
  * Definition for singly-linked list.
  * */
@@ -44,13 +46,13 @@ public class Solution {
 			p = p.next;
 		}
 		*/
-//		System.out.println(s.lengthOfLongestSubstring(new String("abcabcbb")));
-//		System.out.println(s.lengthOfLongestSubstring(new String("dvdf")));
-//		System.out.println(s.lengthOfLongestSubstring(new String("aab")));
-//		System.out.println(s.lengthOfLongestSubstring(new String("bbbbb")));
-//		System.out.println(s.lengthOfLongestSubstring(new String("dvdfva")));
-//		System.out.println(s.lengthOfLongestSubstring(new String("pwwkew")));
-//		System.out.println(s.lengthOfLongestSubstring(new String("abba")));
+		System.out.println(s.lengthOfLongestSubstring("abcabcbb"));
+		System.out.println(s.lengthOfLongestSubstring("abba"));
+		System.out.println(s.lengthOfLongestSubstring("bbbbb"));
+		System.out.println(s.lengthOfLongestSubstring("pwwkew"));
+		System.out.println(s.lengthOfLongestSubstring("dvdf"));
+		System.out.println(s.lengthOfLongestSubstring("dvaadf"));
+		System.out.println(s.lengthOfLongestSubstring("dvabadfe"));
 	}
 
 	public int[] twoSum(int[] nums, int target) {
@@ -103,5 +105,32 @@ public class Solution {
 		}
 		
 		return head;
+    }
+	
+	public int lengthOfLongestSubstring(String s) {
+		HashMap<String,Integer> h = new HashMap<String,Integer>();
+		int maxLength = 0;
+		int curLength = 0;
+		int subIndex = 0;
+		
+		for(int i = 1 ; i <= s.length();i++){
+			String c = new String(new char[]{s.charAt(i-1)});
+			
+			if(h.containsKey(c)){
+				int prev = h.get(c);
+				if(prev > subIndex){
+					subIndex = prev;
+				}
+			}
+			
+			curLength = i - subIndex;
+			h.put(c, i);
+			
+			if(curLength > maxLength){
+				maxLength = curLength;
+			}
+			
+		}
+		return maxLength;
     }
 }
