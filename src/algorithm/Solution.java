@@ -1,5 +1,6 @@
 package algorithm;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -50,6 +51,12 @@ public class Solution {
 		System.out.println(s.lengthOfLongestSubstring("dvdf"));
 		System.out.println(s.lengthOfLongestSubstring("dvaadf"));
 		System.out.println(s.lengthOfLongestSubstring("dvabadfe"));
+		
+		int[] nums1 = new int[]{1,3};
+		int[] nums2 = new int[]{2};
+		int k = (nums1.length + nums2.length)/2;
+		System.out.println(s.findMedianSortedArrays(nums1, nums2, k));
+		
 	}
 
 	public int[] twoSum(int[] nums, int target) {
@@ -130,4 +137,35 @@ public class Solution {
 		}
 		return maxLength;
     }
+	
+	public double findMedianSortedArrays(int[] nums1, int[] nums2,int k) {
+		return findKth(nums1,0,nums2,0,k);
+//		return 0;
+    }
+	
+	private double findKth(int[] nums1, int index1, int[] nums2,int index2, int k) {
+		int m = nums1.length - index1, n = nums2.length - index2;
+		//let m<=n
+		if(m > n){
+			return findKth(nums2,index2,nums1,index1,k);
+		}
+		if(m == 0){
+			return nums2[k-1];
+		}
+		if(k == 1){
+			return Math.min(nums1[0], nums2[0]);
+		}
+		
+		int pa = Math.min(k/2, m), pb = Math.min(k/2, n);
+		
+		if(nums1[pa-1] < nums2[pb-1]){
+			return findKth(nums1,m-pa,nums2,index2,k-pa);
+		}else if (nums1[pa-1] > nums2[pb-1]){
+			return findKth(nums1,index1,nums2,n-pb,k-pb);
+		} else {
+			return nums1[pa -1];
+		}
+		
+    }
+	
 }
