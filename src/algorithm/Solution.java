@@ -44,19 +44,17 @@ public class Solution {
 			p = p.next;
 		}
 		*/
-		System.out.println(s.lengthOfLongestSubstring("abcabcbb"));
-		System.out.println(s.lengthOfLongestSubstring("abba"));
-		System.out.println(s.lengthOfLongestSubstring("bbbbb"));
-		System.out.println(s.lengthOfLongestSubstring("pwwkew"));
-		System.out.println(s.lengthOfLongestSubstring("dvdf"));
-		System.out.println(s.lengthOfLongestSubstring("dvaadf"));
-		System.out.println(s.lengthOfLongestSubstring("dvabadfe"));
+//		System.out.println(s.lengthOfLongestSubstring("abcabcbb"));
+//		System.out.println(s.lengthOfLongestSubstring("abba"));
+//		System.out.println(s.lengthOfLongestSubstring("bbbbb"));
+//		System.out.println(s.lengthOfLongestSubstring("pwwkew"));
+//		System.out.println(s.lengthOfLongestSubstring("dvdf"));
+//		System.out.println(s.lengthOfLongestSubstring("dvaadf"));
+//		System.out.println(s.lengthOfLongestSubstring("dvabadfe"));
+		int[] nums1 = new int[]{1,2};
+		int[] nums2 = new int[]{1,2};
 		
-		int[] nums1 = new int[]{1,3};
-		int[] nums2 = new int[]{2};
-		int k = (nums1.length + nums2.length)/2;
-		System.out.println(s.findMedianSortedArrays(nums1, nums2, k));
-		
+		System.out.println(s.findMedianSortedArrays(nums1, nums2));
 	}
 
 	public int[] twoSum(int[] nums, int target) {
@@ -138,32 +136,32 @@ public class Solution {
 		return maxLength;
     }
 	
-	public double findMedianSortedArrays(int[] nums1, int[] nums2,int k) {
-		return findKth(nums1,0,nums2,0,k);
-//		return 0;
+	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+		int k1 = (nums1.length + nums2.length + 1)/2;
+		int k2 = (nums1.length + nums2.length +2)/2;
+		
+		return (findKth(nums1,0,nums2,0,k1) + findKth(nums1,0,nums2,0,k2))/2;
     }
 	
-	private double findKth(int[] nums1, int index1, int[] nums2,int index2, int k) {
-		int m = nums1.length - index1, n = nums2.length - index2;
+	private double findKth(int[] nums1, int istart1, int[] nums2,int istart2, int k) {
+		int m = nums1.length - istart1, n = nums2.length - istart2;
 		//let m<=n
 		if(m > n){
-			return findKth(nums2,index2,nums1,index1,k);
+			return findKth(nums2,istart2,nums1,istart1,k);
 		}
 		if(m == 0){
-			return nums2[k-1];
+			return nums2[istart2+k-1];
 		}
 		if(k == 1){
-			return Math.min(nums1[0], nums2[0]);
+			return Math.min(nums1[istart1], nums2[istart2]);
 		}
 		
 		int pa = Math.min(k/2, m), pb = Math.min(k/2, n);
 		
-		if(nums1[pa-1] < nums2[pb-1]){
-			return findKth(nums1,m-pa,nums2,index2,k-pa);
-		}else if (nums1[pa-1] > nums2[pb-1]){
-			return findKth(nums1,index1,nums2,n-pb,k-pb);
+		if (nums1[istart1+pa-1] > nums2[istart2+pb-1]){
+			return findKth(nums1,istart1,nums2,istart2+pb,k-pb);
 		} else {
-			return nums1[pa -1];
+			return findKth(nums1,istart1+pa,nums2,istart2,k-pa);
 		}
 		
     }
