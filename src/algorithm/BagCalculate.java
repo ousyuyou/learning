@@ -9,7 +9,7 @@ public class BagCalculate {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int m = 95000;
-		int[] a = {9548,35120,6509,10090,32050,25160,45601,16500,9810,10000,55000};
+		int[] a = {9548,35120,6509,10090,32050,25160,45601,16500,9810,10000,55000,5082,2000};
 		
 //		int m = 89;
 //		int[] a = {7,11,13,5,2,10,50};
